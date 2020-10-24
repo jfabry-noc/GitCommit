@@ -83,10 +83,6 @@ Set-Location -Path $PSScriptRoot
 # Ensure errors are cleared.
 $Error.clear()
 
-# Define URLs.
-$repoListURL = "https://api.github.com/user/repos?visibility=all"
-$commitBaseURL = "https://api.github.com/repos/"
-
 # Start with importing the config.
 if(Test-Path -Path "./config.json") {
     $configHash = Get-Content -Path "./config.json" | ConvertFrom-Json
@@ -95,9 +91,23 @@ if(Test-Path -Path "./config.json") {
     exit
 }
 
+# Define URLs.
+$repoListURL = "https://api.github.com/user/repos?visibility=all"
+$commitBaseURL = "https://api.github.com/repos/" + $configHash.username + "/"
+
+
 # Parse together the Base64-encoded string for authentication.
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $configHash.username, $configHash.token)))
 
 # Get the full repository list.
 $repoList = QueryRestAPIMulti -URL $repoListURL -AuthString $base64AuthInfo
-Write-Output $repoList
+
+# Loop through each repo.
+foreach($singleRepo in $repoList) {
+    # Get the commits for the repo.
+    $currentRepoCommitURL = $commitBaseURL + $singleRepo.name + "/commits"
+    Write-Output $currentRepoCommitURL
+
+    # Get the commits.
+    #$currentCommits = QueryRestAPIMulti -URL $currentRepoCommitURL -AuthString $base64AuthInfo
+}
