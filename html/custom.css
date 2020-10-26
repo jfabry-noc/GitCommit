@@ -1,0 +1,33 @@
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    background-color: #f1d4d4;
+}
+
+.date {
+    color: #790c5a;
+}
+
+body {
+    background-color: #f1d4d4;
+}
+
+h1 {
+    color: #cc0e74;
+}
+
+h2 {
+    color: #cc0e74;
+}
+
+h3 {
+    color: #e6739f;
+}
+
+a {
+    color: #790c5a;
+}
