@@ -5,7 +5,7 @@
 }
 
 .footer {
-    background-color: #f1d4d4;
+    background-color: #e6739f;
 }
 
 .date {
@@ -14,18 +14,22 @@
 
 body {
     background-color: #f1d4d4;
+    font-family: 'Anonymous Pro', monospace;
 }
 
 h1 {
     color: #cc0e74;
+    font-family: 'Lora', serif;
 }
 
 h2 {
     color: #cc0e74;
+    font-family: 'Lora', serif;
 }
 
 h3 {
     color: #e6739f;
+    font-family: 'Lora', serif;
 }
 
 a {
