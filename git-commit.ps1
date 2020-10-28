@@ -116,6 +116,9 @@ WriteLog -Message "Starting the script..." -Type info
 $initTimestamp = (Get-Date).AddHours(-24)
 $initTimeISO = Get-Date -Date $initTimestamp -Format "o"
 
+# Define the HTMl file.
+$htmlFile = "./html/index.html"
+
 # Define the replacement watermark.
 $replacementWatermark = "`t`t`t<!-- Watermark -->`n"
 
@@ -180,7 +183,34 @@ if($commitMessageList.Count -gt 0) {
         $replacementWatermark += "`t`t`t<p>" + $singleCommitMessage.commitMessage + "</h3>`n"
         $replacementWatermark += "`t`t`t<p class=`"date`">" + $singleCommitMessage.commitDate + "</p>`n"
     }
-    Write-Output $replacementWatermark
+
+    # Update the HTML file. First verify it exists.
+    WriteLog -Message "Checking the HTML file." -Type info
+    if(Test-Path -Path $htmlFile) {
+        # Get the file content.
+        $htmlContent = Get-Content -Path $htmlFile
+
+        # Loop through each line and set up the new output.
+        $htmlOutput = ""
+        foreach($line in $htmlContent) {
+            # Update with the new content if we hit the watermark.
+            if($line.Trim() -eq "<!-- Watermark -->") {
+                WriteLog -Message "Matched on the watermark. Updating..." -Type info
+                $line = $replacementWatermark
+            }
+
+            # Always write the line regardless.
+            $htmlOutput += $line + "`n"
+        }
+
+        Write-Output $htmlOutput
+        # Overwrite the HTML file.
+        WriteLog -Message "Writing the new HTML file." -Type info
+        $htmlOutput | Out-File -Path $htmlFile -Encoding ascii -Force
+    } else {
+        WriteLog -Message "Couldn't find the HTML file! Verify your repository isn't borked! Quitting..." -Type error
+        exit(1)
+    }
 } else {
     WriteLog -Message "No new commits to write! Quitting..." -Type info
 }
