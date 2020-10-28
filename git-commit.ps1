@@ -4,6 +4,25 @@
     Source:     https://github.com/jfabry-noc/GitCommit
 #>
 
+# Class to house each new commit.
+class CommitMessage {
+    [string] $repoName
+    [DateTime] $commitDate
+    [string] $commitMessage
+
+    # Empty default constructor.
+    CommitMessage() {
+        # Does nothing.
+    }
+
+    # Constructor that takes all values at time of creation.
+    CommitMessage([string]$repoName, [DateTime]$commitDate, [string]$commitMessage) {
+        $this.repoName = $repoName
+        $this.commitDate = $commitDate
+        $this.commitMessage = $commitMessage
+    }
+}
+
 # Function to query a REST API expecting a list of results.
 function QueryRestAPIMulti{
     param(
@@ -115,6 +134,9 @@ if(Test-Path -Path "./config.json") {
 $repoListURL = "https://api.github.com/user/repos?visibility=all"
 $commitBaseURL = "https://api.github.com/repos/" + $configHash.username + "/"
 
+# Create a list to hold all commit messages that are new since the last run.
+$commitMessageList = @()
+
 
 # Parse together the Base64-encoded string for authentication.
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $configHash.username, $configHash.token)))
@@ -140,11 +162,19 @@ foreach($singleRepo in $repoList) {
         # Check to make sure I made the commit.
         if($singleCommit.author.login -eq "jfabry-noc" -and $currentCommitTime -ge $fourHoursAgo) {
             # If we made it into the conditional we know the commit should be published.
+            $winningCommit = [CommitMessage]::new($singleRepo.name, $currentCommitTime, $singleCommit.commit.message)
+            $commitMessageList += $winningCommit
+            <#
             $replacementWatermark += "`t`t`t<h3>" + $singleRepo.name + "</h3>`n"
             $replacementWatermark += "`t`t`t<p>" + $singleCommit.commit.message + "</p>`n"
             $replacementWatermark += "`t`t`t<p class=`"date`">" + $currentCommitTime + "</p>`n"
+            #>
         }
     }
 }
 
-Write-Output $replacementWatermark
+# Sort the list of valid commits if there are any.
+if($commitMessageList.Count -gt 1) {
+    $commitMessageList = $commitMessageList | Sort-Object -Descending -Property CommitDate
+}
+Write-Output $commitMessageList
