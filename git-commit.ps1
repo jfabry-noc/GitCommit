@@ -150,6 +150,11 @@ $repoList = QueryRestAPIMulti -URL $repoListURL -AuthString $base64AuthInfo
 
 # Loop through each repo.
 foreach($singleRepo in $repoList) {
+    # Skip the current repo since it requires a commit to publish to Netlify.
+    if($singleRepo.name -eq "GitCommit") {
+        continue
+    }
+
     # Get the commits for the repo.
     $currentRepoCommitURL = $commitBaseURL + $singleRepo.name + "/commits?since=" + $initTimeISO
 
