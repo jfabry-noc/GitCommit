@@ -11,15 +11,25 @@ function QueryRestAPIMulti{
         [Parameter(Mandatory=$true)]$AuthString
     )
 
-    # Start the loop for possible paging.
-    while($URL) {
-        # Query NCM.
-        try {
-            $request = Invoke-RestMethod -Headers @{Authorization=("Basic {0}" -f $AuthString)} -Uri $URL -UseBasicParsing -Method GET
-            return $request
-        } catch {
-            Write-Output "Error making the request! Last error was: $($Error[-1])"
+    # Doing this with Invoke-WebRequest because Invoke-RestMethod is a quarter baked at best...
+    WriteLog -Message "Making a query to $URL..." -Type info
+    try {
+        $request = Invoke-WebRequest -Headers @{Authorization=("Basic {0}" -f $AuthString)} -Uri $URL -UseBasicParsing -Method GET
+
+
+        # Make sure it was successful.
+        if($request.StatusCode -eq 404) {
+            WriteLog -Message "Received a 404 from $URL. Skipping..." -Type info
+            return $null
+        } elseif($request.StatusCode -ne 200) {
+            WriteLog -Message "ERROR! Status Code: $($request.StatusCode)." -Type error
+            exit 1
+        } else {
+            return $request.Content | ConvertFrom-Json
         }
+    } catch {
+        WriteLog -Message "Skipping $URL because the GitHub API is... bad." -Type error
+        return $null
     }
 }
 
@@ -79,6 +89,16 @@ function WriteLog {
 
 # Main code.
 Set-Location -Path $PSScriptRoot
+WriteLog -Message "####################" -Type info
+WriteLog -Message "Starting the script..." -Type info
+
+# Define a baseline time assuming the code runs every 4 hours.
+# CHANGE TO 4 HOURS LATER!
+$initTimestamp = (Get-Date).AddHours(-24)
+$initTimeISO = Get-Date -Date $initTimestamp -Format "o"
+
+# Define the replacement watermark.
+$replacementWatermark = "`t`t`t<!-- Watermark -->`n"
 
 # Ensure errors are cleared.
 $Error.clear()
@@ -87,7 +107,7 @@ $Error.clear()
 if(Test-Path -Path "./config.json") {
     $configHash = Get-Content -Path "./config.json" | ConvertFrom-Json
 } else {
-    Write-Output "Could not find the config file! Quitting..."
+    WriteLog -Message "Could not find the config file! Quitting..." -Type error
     exit
 }
 
@@ -100,14 +120,31 @@ $commitBaseURL = "https://api.github.com/repos/" + $configHash.username + "/"
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $configHash.username, $configHash.token)))
 
 # Get the full repository list.
+WriteLog -Message "Getting the repository list." -Type info
 $repoList = QueryRestAPIMulti -URL $repoListURL -AuthString $base64AuthInfo
 
 # Loop through each repo.
 foreach($singleRepo in $repoList) {
     # Get the commits for the repo.
-    $currentRepoCommitURL = $commitBaseURL + $singleRepo.name + "/commits"
-    Write-Output $currentRepoCommitURL
+    $currentRepoCommitURL = $commitBaseURL + $singleRepo.name + "/commits?since=" + $initTimeISO
 
     # Get the commits.
-    #$currentCommits = QueryRestAPIMulti -URL $currentRepoCommitURL -AuthString $base64AuthInfo
+    WriteLog -Message "Getting the commits for $currentRepoCommitURL" -Type info
+    $currentCommits = QueryRestAPIMulti -URL $currentRepoCommitURL -AuthString $base64AuthInfo
+
+    # Loop through the commits.
+    foreach($singleCommit in $currentCommits) {
+        # Convert the commit time to a DateTime object.
+        $currentCommitTime = Get-Date -Date $singleCommit.commit.author.date
+
+        # Check to make sure I made the commit.
+        if($singleCommit.author.login -eq "jfabry-noc" -and $currentCommitTime -ge $fourHoursAgo) {
+            # If we made it into the conditional we know the commit should be published.
+            $replacementWatermark += "`t`t`t<h3>" + $singleRepo.name + "</h3>`n"
+            $replacementWatermark += "`t`t`t<p>" + $singleCommit.commit.message + "</p>`n"
+            $replacementWatermark += "`t`t`t<p class=`"date`">" + $currentCommitTime + "</p>`n"
+        }
+    }
 }
+
+Write-Output $replacementWatermark
