@@ -164,17 +164,26 @@ foreach($singleRepo in $repoList) {
             # If we made it into the conditional we know the commit should be published.
             $winningCommit = [CommitMessage]::new($singleRepo.name, $currentCommitTime, $singleCommit.commit.message)
             $commitMessageList += $winningCommit
-            <#
-            $replacementWatermark += "`t`t`t<h3>" + $singleRepo.name + "</h3>`n"
-            $replacementWatermark += "`t`t`t<p>" + $singleCommit.commit.message + "</p>`n"
-            $replacementWatermark += "`t`t`t<p class=`"date`">" + $currentCommitTime + "</p>`n"
-            #>
         }
     }
 }
 
 # Sort the list of valid commits if there are any.
-if($commitMessageList.Count -gt 1) {
+WriteLog -Message "Completed the gathering of all commits!" -Type info
+if($commitMessageList.Count -gt 0) {
+    # Sort the commits.
     $commitMessageList = $commitMessageList | Sort-Object -Descending -Property CommitDate
+
+    # Write the HTML for each commit message.
+    foreach($singleCommitMessage in $commitMessageList) {
+        $replacementWatermark += "`t`t`t<h3>" + $singleCommitMessage.repoName + "</h3>`n"
+        $replacementWatermark += "`t`t`t<p>" + $singleCommitMessage.commitMessage + "</h3>`n"
+        $replacementWatermark += "`t`t`t<p class=`"date`">" + $singleCommitMessage.commitDate + "</p>`n"
+    }
+    Write-Output $replacementWatermark
+} else {
+    WriteLog -Message "No new commits to write! Quitting..." -Type info
 }
-Write-Output $commitMessageList
+
+# Log the end of the script.
+WriteLog -Message "Gracefully finished the script." -Type info
