@@ -113,7 +113,7 @@ WriteLog -Message "Starting the script..." -Type info
 
 # Define a baseline time assuming the code runs every 4 hours.
 # CHANGE TO 4 HOURS LATER!
-$initTimestamp = (Get-Date).AddHours(-24)
+$initTimestamp = (Get-Date).AddHours(-48)
 $initTimeISO = Get-Date -Date $initTimestamp -Format "o"
 
 # Define the HTMl file.
@@ -184,9 +184,9 @@ if($commitMessageList.Count -gt 0) {
 
     # Write the HTML for each commit message.
     foreach($singleCommitMessage in $commitMessageList) {
-        $replacementWatermark += "`t`t`t<h3>" + $singleCommitMessage.repoName + "</h3>`n"
-        $replacementWatermark += "`t`t`t<p>" + $singleCommitMessage.commitMessage + "</h3>`n"
-        $replacementWatermark += "`t`t`t<p class=`"date`">" + $singleCommitMessage.commitDate + "</p>`n"
+        $replacementWatermark += "`t`t<h3>" + $singleCommitMessage.repoName + "</h3>`n"
+        $replacementWatermark += "`t`t<p>" + $singleCommitMessage.commitMessage + "</h3>`n"
+        $replacementWatermark += "`t`t<p class=`"date`">" + $singleCommitMessage.commitDate + "</p>`n"
     }
 
     # Update the HTML file. First verify it exists.
@@ -212,6 +212,11 @@ if($commitMessageList.Count -gt 0) {
         # Overwrite the HTML file.
         WriteLog -Message "Writing the new HTML file." -Type info
         $htmlOutput | Out-File -Path $htmlFile -Encoding ascii -Force
+
+        # Commit to the repo so that Netlify can update via CI.
+        WriteLog -Message "Making a new commit for $($commitMessageList.Count) commits."
+        git add ./html/.
+        git commit -m "Added $($commitMessageList.Count) new commits."
     } else {
         WriteLog -Message "Couldn't find the HTML file! Verify your repository isn't borked! Quitting..." -Type error
         exit(1)
