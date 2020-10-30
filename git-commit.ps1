@@ -112,8 +112,7 @@ WriteLog -Message "####################" -Type info
 WriteLog -Message "Starting the script..." -Type info
 
 # Define a baseline time assuming the code runs every 4 hours.
-# CHANGE TO 4 HOURS LATER!
-$initTimestamp = (Get-Date).AddHours(-48)
+$initTimestamp = (Get-Date).AddHours(-4)
 $initTimeISO = Get-Date -Date $initTimestamp -Format "o"
 
 # Define the HTMl file.
