@@ -214,7 +214,7 @@ if($commitMessageList.Count -gt 0) {
         $htmlOutput | Out-File -Path $htmlFile -Encoding ascii -Force
 
         # Commit to the repo so that Netlify can update via CI.
-        WriteLog -Message "Making a new commit for $($commitMessageList.Count) commits."
+        WriteLog -Message "Making a new commit for $($commitMessageList.Count) commits." -Type info
         git add ./html/.
         git commit -m "Added $($commitMessageList.Count) new commits."
     } else {
