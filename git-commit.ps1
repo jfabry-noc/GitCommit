@@ -217,6 +217,7 @@ if($commitMessageList.Count -gt 0) {
         WriteLog -Message "Making a new commit for $($commitMessageList.Count) commits." -Type info
         git add ./html/.
         git commit -m "Added $($commitMessageList.Count) new commits."
+        git push origin main
     } else {
         WriteLog -Message "Couldn't find the HTML file! Verify your repository isn't borked! Quitting..." -Type error
         exit(1)
