@@ -149,11 +149,6 @@ $repoList = QueryRestAPIMulti -URL $repoListURL -AuthString $base64AuthInfo
 
 # Loop through each repo.
 foreach($singleRepo in $repoList) {
-    # Skip the current repo since it requires a commit to publish to Netlify.
-    if($singleRepo.name -eq "GitCommit") {
-        continue
-    }
-
     # Get the commits for the repo.
     $currentRepoCommitURL = $commitBaseURL + $singleRepo.name + "/commits?since=" + $initTimeCustom
 
@@ -163,6 +158,11 @@ foreach($singleRepo in $repoList) {
 
     # Loop through the commits.
     foreach($singleCommit in $currentCommits) {
+        # Check if these are legitimate commits to this repo. If not, just continue.
+        if($singleRepo.name -eq "GitCommit" -and $singleCommit.commit.message -like "Added * new commits.") {
+            continue
+        }
+
         # Convert the commit time to a DateTime object.
         $currentCommitTime = Get-Date -Date $singleCommit.commit.author.date
 
