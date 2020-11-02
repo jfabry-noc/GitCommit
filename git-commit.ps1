@@ -167,7 +167,7 @@ foreach($singleRepo in $repoList) {
         $currentCommitTime = Get-Date -Date $singleCommit.commit.author.date
 
         # Check to make sure I made the commit.
-        if($singleCommit.author.login -eq "jfabry-noc" -and $currentCommitTime -ge $fourHoursAgo) {
+        if($singleCommit.author.login -eq "jfabry-noc") {
             # If we made it into the conditional we know the commit should be published.
             $winningCommit = [CommitMessage]::new($singleRepo.name, $currentCommitTime, $singleCommit.commit.message)
             $commitMessageList += $winningCommit
@@ -216,7 +216,7 @@ if($commitMessageList.Count -gt 0) {
         WriteLog -Message "Making a new commit for $($commitMessageList.Count) commits." -Type info
         git add ./html/.
         git commit -m "Added $($commitMessageList.Count) new commits."
-        git push origin main
+        git push origin main#>
     } else {
         WriteLog -Message "Couldn't find the HTML file! Verify your repository isn't borked! Quitting..." -Type error
         exit(1)
