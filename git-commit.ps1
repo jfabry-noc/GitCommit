@@ -113,7 +113,7 @@ WriteLog -Message "Starting the script..." -Type info
 
 # Define a baseline time assuming the code runs every 4 hours.
 $initTimestamp = (Get-Date).AddHours(-4)
-$initTimeISO = Get-Date -Date $initTimestamp -Format "o"
+$initTimeCustom = (Get-Date -Date $initTimestamp -Format "s") + "Z"
 
 # Define the HTMl file.
 $htmlFile = "./html/index.html"
@@ -155,7 +155,7 @@ foreach($singleRepo in $repoList) {
     }
 
     # Get the commits for the repo.
-    $currentRepoCommitURL = $commitBaseURL + $singleRepo.name + "/commits?since=" + $initTimeISO
+    $currentRepoCommitURL = $commitBaseURL + $singleRepo.name + "/commits?since=" + $initTimeCustom
 
     # Get the commits.
     WriteLog -Message "Getting the commits for $currentRepoCommitURL" -Type info
