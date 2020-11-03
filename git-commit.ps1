@@ -153,7 +153,6 @@ foreach($singleRepo in $repoList) {
     $currentRepoCommitURL = $commitBaseURL + $singleRepo.name + "/commits?since=" + $initTimeCustom
 
     # Get the commits.
-    WriteLog -Message "Getting the commits for $currentRepoCommitURL" -Type info
     $currentCommits = QueryRestAPIMulti -URL $currentRepoCommitURL -AuthString $base64AuthInfo
 
     # Loop through the commits.
@@ -203,8 +202,12 @@ if($commitMessageList.Count -gt 0) {
                 $line = $replacementWatermark
             }
 
-            # Always write the line regardless.
-            $htmlOutput += $line + "`n"
+            # Always write the line regardless, but don't add a newline to the very end.
+            if($line -eq '</html>') {
+                $htmlOutput += $line
+            } else {
+                $htmlOutput += $line + "`n"
+            }
         }
 
         Write-Output $htmlOutput
