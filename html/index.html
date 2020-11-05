@@ -35,6 +35,13 @@
       <h2>2020 Commits</h2>
 			<!-- Watermark -->
 		<h3>O365MalwareAlerts</h3>
+		<p>Added a check for an existing result file and removing it prior to starting anything else.</h3>
+		<p class="date">11/05/2020 16:27:23</p>
+		<h3>O365MalwareAlerts</h3>
+		<p>Shifted the script to be designed for running as a Scheduled Task or cron job rather than by LogicMonitor directly due to the authentication requirements. Added logging.</h3>
+		<p class="date">11/05/2020 16:11:27</p>
+
+		<h3>O365MalwareAlerts</h3>
 		<p>Created a new script file for querying the O365 quarantine for messages filtered there via transport rule. The script will validate that the appropriate transport rule caught the message (not filterable in the original call) and then report back how many users have received phishing messages blocked this way. Handles the metrics on a month-to-date basis.</h3>
 		<p class="date">11/04/2020 20:20:44</p>
 
