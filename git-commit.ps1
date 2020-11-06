@@ -182,9 +182,9 @@ if($commitMessageList.Count -gt 0) {
 
     # Write the HTML for each commit message.
     foreach($singleCommitMessage in $commitMessageList) {
-        $replacementWatermark += "`t`t<h3>" + $singleCommitMessage.repoName + "</h3>`n"
-        $replacementWatermark += "`t`t<p>" + $singleCommitMessage.commitMessage + "</h3>`n"
-        $replacementWatermark += "`t`t<p class=`"date`">" + $singleCommitMessage.commitDate + "</p>`n"
+        $replacementWatermark += "`t<h3>" + $singleCommitMessage.repoName + "</h3>`n"
+        $replacementWatermark += "`t<p>" + $singleCommitMessage.commitMessage + "</p>`n"
+        $replacementWatermark += "`t<p class=`"date`">" + $singleCommitMessage.commitDate + "</p>`n"
     }
 
     # Update the HTML file. First verify it exists.
