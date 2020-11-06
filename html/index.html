@@ -34,6 +34,35 @@
       <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
       <h2>2020 Commits</h2>
 			<!-- Watermark -->
+		<h3>O365MalwareAlerts</h3>
+		<p>Modified the script to print only the prefix of the email address to simplify the BatchScript creation process within LogicMonitor.</h3>
+		<p class="date">11/05/2020 20:32:25</p>
+		<h3>O365MalwareAlerts</h3>
+		<p>Created a script for a LogicMonitor DataSource to process the phishing results from the local collector's filesystem as a BatchScript. Also updated the .gitignore file to avoid commiting the sample result .csv file.</h3>
+		<p class="date">11/05/2020 20:02:59</p>
+
+		<h3>O365MalwareAlerts</h3>
+		<p>Added a check for an existing result file and removing it prior to starting anything else.</h3>
+		<p class="date">11/05/2020 16:27:23</p>
+		<h3>O365MalwareAlerts</h3>
+		<p>Shifted the script to be designed for running as a Scheduled Task or cron job rather than by LogicMonitor directly due to the authentication requirements. Added logging.</h3>
+		<p class="date">11/05/2020 16:11:27</p>
+
+		<h3>O365MalwareAlerts</h3>
+		<p>Created a new script file for querying the O365 quarantine for messages filtered there via transport rule. The script will validate that the appropriate transport rule caught the message (not filterable in the original call) and then report back how many users have received phishing messages blocked this way. Handles the metrics on a month-to-date basis.</h3>
+		<p class="date">11/04/2020 20:20:44</p>
+
+		<h3>CPPushAPI</h3>
+		<p>Added the baseline files that were created for generic webhook listener testing. Also included the sample nginx.conf file for Gunicorn as the Flask + Nginx serving combo.</h3>
+		<p class="date">11/04/2020 15:03:08</p>
+		<h3>CPPushAPI</h3>
+		<p>Initial commit</h3>
+		<p class="date">11/04/2020 12:55:47</p>
+
+		<h3>GitCommit</h3>
+		<p>Removed redundant logging when querying each repo for commits. Modified the HTML generation to stop adding an extra newline to the end of the HTML file each time. Removed a repeated line in the HTML file because I forgot how daylight saving time works.</h3>
+		<p class="date">11/03/2020 13:07:07</p>
+
 		<h3>GitCommit</h3>
 		<p>Modified the script to allow for commit messages on the GitCommit repo itself if they aren't the ones automatically generated for the sake of CI/CD to Netlify.</p>
 		<p class="date">11/02/2020 22:55:35</p>
