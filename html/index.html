@@ -35,6 +35,26 @@
       <h2>2020 Commits</h2>
 			<!-- Watermark -->
 	<h3>Dashboard</h3>
+	<p>Added a conditional to the start of the script to check for the uid. If
+it isn't 0, which would mean the script was executed with sudo, the user
+is notified and the script exits.
+
+Several sections were updated to include -y on apt commands that were
+previously missing.
+
+The default php.ini setting includes the " =" after the ";date.timezone"
+listing. The sed commands were updated to reflect this.</p>
+	<p class="date">11/10/2020 17:50:12</p>
+	<h3>LogicMonitorGroovy</h3>
+	<p>Merge pull request #3 from jfabry-noc/Bob_test
+
+Bob test</p>
+	<p class="date">11/10/2020 16:43:29</p>
+	<h3>Dashboard</h3>
+	<p>Added a check for the current PHP version. If it's 7.2, the script will add the PPAs and install everything. If it's already 7.4, the script will start straight at the configuration stage.</p>
+	<p class="date">11/10/2020 16:03:14</p>
+
+	<h3>Dashboard</h3>
 	<p>Modified the parts of the script calling another user account so that all commands can execute under the new user before gracefully exiting back to the original shell without user intervention.</p>
 	<p class="date">11/09/2020 22:57:51</p>
 	<h3>Dashboard</h3>
