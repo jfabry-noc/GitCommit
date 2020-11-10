@@ -35,6 +35,13 @@
       <h2>2020 Commits</h2>
 			<!-- Watermark -->
 	<h3>Dashboard</h3>
+	<p>Modified the parts of the script calling another user account so that all commands can execute under the new user before gracefully exiting back to the original shell without user intervention.</p>
+	<p class="date">11/09/2020 22:57:51</p>
+	<h3>Dashboard</h3>
+	<p>Added the option to specify 'DEV' as a second parameter. If provided, development mode will be enabled. In this mode, the user will be prompted after each stage of the script if they would like to continue or kill the operation. Prevents the script from running amuck when testing it if, for example, the last command executes successfully but does not yield the expected result.</p>
+	<p class="date">11/09/2020 21:44:53</p>
+
+	<h3>Dashboard</h3>
 	<p>Added sed commands for modifying the php.ini files where a timezone update is necessary. Also added a sed command to escape the backslash in the timezone name so that it can be re-used in another sed command later without escaping.</p>
 	<p class="date">11/09/2020 19:38:21</p>
 	<h3>Dashboard</h3>
