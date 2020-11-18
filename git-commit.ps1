@@ -158,7 +158,7 @@ foreach($singleRepo in $repoList) {
     # Loop through the commits.
     foreach($singleCommit in $currentCommits) {
         # Check if these are legitimate commits to this repo. If not, just continue.
-        if($singleRepo.name -eq "GitCommit" -and $singleCommit.commit.message -like "Added * new commits.") {
+        if($singleRepo.name -eq "GitCommit" -and $singleCommit.commit.message -like "Added * new commit(s).") {
             continue
         }
 
