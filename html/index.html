@@ -34,6 +34,13 @@
       <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
       <h2>2020 Commits</h2>
 			<!-- Watermark -->
+	<h3>GitCommit</h3>
+	<p>Fixed a bug I introduced in 7d7b730 where I changed the commit message to be grammatically correct. This broke my filter for those messages from posting to the site and creating an endless loop of posts. The filter should now work again for the new commit message, and the errant postings have been cleaned up.</p>
+	<p class="date">11/18/2020 23:04:48</p>
+	<h3>CPPushAPI</h3>
+	<p>Added a new .gitignore entry for an external Python file for the shared secret used to authenticate communication. Updated the webhook listener to now calculate the hash of the response body with the shared secret as SHA256 in order to validate that the message came from a legitimate server. This is used in conjunction with firewalling access to just the documented IPs to the Flask server.</p>
+	<p class="date">11/18/2020 22:47:46</p>
+
 	<h3>CPPushAPI</h3>
 	<p>Moved the writing of the JSON file to a function and added error checking to it.</p>
 	<p class="date">11/16/2020 18:41:56</p>
