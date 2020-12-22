@@ -35,6 +35,19 @@
       <h2>2020 Commits</h2>
 			<!-- Watermark -->
 	<h3>OxidizedBackup</h3>
+	<p>Removed the test variables that hard-coded values to allow for testing on my own system. Removed the block comment for tarball creation that was added to avoid executing that code during the SharePoint development.</p>
+	<p class="date">12/22/2020 19:57:02</p>
+	<h3>OxidizedBackup</h3>
+	<p>Added a check for the contents of the directory to which the tarball was uploaded. If the directory has more than 4 items, the oldest of the items is processed and deleted. With a 1 week cron job, this will allow for a rolling series of a month of backups.</p>
+	<p class="date">12/22/2020 19:55:24</p>
+	<h3>OxidizedBackup</h3>
+	<p>Refactored the process of uploading so that the folder is completely handled prior to initiating it. Created a conditional to chart if the folder exists or needs to be created.</p>
+	<p class="date">12/22/2020 18:50:17</p>
+	<h3>OxidizedBackup</h3>
+	<p>Wrapped the match for the hostname to a directory in SharePoint in a conditional. Automated the creation of a new hostname-based directory if a match is not found.</p>
+	<p class="date">12/22/2020 18:34:02</p>
+
+	<h3>OxidizedBackup</h3>
 	<p>Added math to determine how many 10 MB chunks the tarball will need to be broken into in order to guarantee that the upload to SharePoint will be successful. Added a loop to upload the bytes of the file in the appropriate number of chunks.</p>
 	<p class="date">12/21/2020 22:24:32</p>
 	<h3>OxidizedBackup</h3>
