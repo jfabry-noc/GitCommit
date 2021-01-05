@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="GitCommit.Gay">
+    <meta name="author" content="JFabHD">
+    <link rel="icon" href="./unicorn.ico">
+
+    <title>GitCommit.Gay</title>
+
+    <!-- Google Fonts. -->
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Lora&family=Monoton&display=swap" rel="stylesheet">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="./bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./sticky-footer.css" rel="stylesheet">
+
+    <!-- My own CSS. -->
+    <!-- https://colorhunt.co/palette/213165 -->
+    <link href="./custom.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- Begin page content -->
+    <main role="main" class="container">
+      <h1 class="mt-5">git commit -m 'gay'</h1>
+      <a href="https://gitcommit.gay"><img class="center" src="./unicorn_small.png"></a>
+      <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
+      <h2>2020 Commits</h2>
+			<!-- Watermark -->
+	<h3>OxidizedBackup</h3>
+	<p>Made the configuration script executable. Modified the shebang to point to Bash rather than ZSH since the Linux installations this will be used on do not have ZSH installed.</p>
+	<p class="date">12/28/2020 21:24:26</p>
+
+	<h3>OxidizedBackup</h3>
+	<p>Added an initial timestamp value of 1 year from the current moment. This is ensures date comparison with the files retrieved from SharePoint when determining which is the oldest file to delete.</p>
+	<p class="date">12/28/2020 18:05:38</p>
+
+	<h3>OxidizedBackup</h3>
+	<p>Removed the test variables that hard-coded values to allow for testing on my own system. Removed the block comment for tarball creation that was added to avoid executing that code during the SharePoint development.</p>
+	<p class="date">12/22/2020 19:57:02</p>
+	<h3>OxidizedBackup</h3>
+	<p>Added a check for the contents of the directory to which the tarball was uploaded. If the directory has more than 4 items, the oldest of the items is processed and deleted. With a 1 week cron job, this will allow for a rolling series of a month of backups.</p>
+	<p class="date">12/22/2020 19:55:24</p>
+	<h3>OxidizedBackup</h3>
+	<p>Refactored the process of uploading so that the folder is completely handled prior to initiating it. Created a conditional to chart if the folder exists or needs to be created.</p>
+	<p class="date">12/22/2020 18:50:17</p>
+	<h3>OxidizedBackup</h3>
+	<p>Wrapped the match for the hostname to a directory in SharePoint in a conditional. Automated the creation of a new hostname-based directory if a match is not found.</p>
+	<p class="date">12/22/2020 18:34:02</p>
+
+	<h3>OxidizedBackup</h3>
+	<p>Added math to determine how many 10 MB chunks the tarball will need to be broken into in order to guarantee that the upload to SharePoint will be successful. Added a loop to upload the bytes of the file in the appropriate number of chunks.</p>
+	<p class="date">12/21/2020 22:24:32</p>
+	<h3>OxidizedBackup</h3>
+	<p>Updated .gitignore file to not include any backup tarballs that have been captured. Added the ability to query for the target file to receive its file ID from SharePoint and use that to create a file upload session.</p>
+	<p class="date">12/21/2020 22:06:18</p>
+
+	<h3>OxidizedBackup</h3>
+	<p>Removed the venv directories from the repository. Created a configuration script and added a requirements.txt file for pip3.</p>
+	<p class="date">12/21/2020 18:35:43</p>
+
+	<h3>CPRouterReport</h3>
+	<p>Cleaned up test code. Added a call to the function to back up the log file past 10 MB.</p>
+	<p class="date">12/11/2020 13:22:05</p>
+
+	<h3>CPRouterReport</h3>
+	<p>Added the ability to write a uniquely-named CSV file with the id, serial number, MAC address, and name of each matching router.</p>
+	<p class="date">12/10/2020 20:30:35</p>
+	<h3>CPRouterReport</h3>
+	<p>Added the baseline code for gathering the group list, parsing out the URLs for the relevant groups, and then checking routers for membership of those groups. Router details are stored in a class.</p>
+	<p class="date">12/10/2020 20:10:50</p>
+
+	<h3>CPRouterReport</h3>
+	<p>Initial commit</p>
+	<p class="date">12/10/2020 19:03:20</p>
+	<h3>LogicMonitorGroovy</h3>
+	<p>Added a script to import the .csv file with speed test results. The report exists on the local filesystem of the collector, so the Groovy code imports from there and parses out the appropriate information, formatting it in a way that LogicMonitor can ingest. Also included a parsing script to handling the instancing of the data from Active Discovery.</p>
+	<p class="date">12/10/2020 18:50:01</p>
+
+	<h3>CPSpeedTests</h3>
+	<p>Modified the router object creation to remove commas from the name. This will prevent errors when parsing the .csv file later where the delimiter causes a skew to each row.</p>
+	<p class="date">12/08/2020 20:36:38</p>
+
+	<h3>CPSpeedTests</h3>
+	<p>Modified the latency and jitter values to convert them from microseconds to milliseconds. Also added parsing to force a conversion of the string result value to a double, and try-catch blocks to handle any failed conversions. Changed the backoff time when waiting for the tests to finish after the initial completion estimate from 2 minutes to 5 minutes.</p>
+	<p class="date">12/08/2020 18:30:03</p>
+
+	<h3>CPSpeedTests</h3>
+	<p>Removed testing code.</p>
+	<p class="date">12/07/2020 22:36:45</p>
+
+	<h3>LogicMonitorGroovy</h3>
+	<p>Updated the device discovery to only include customer routers from 2 MSP management groups in NCM.</p>
+	<p class="date">12/04/2020 18:41:12</p>
+	<h3>LogicMonitorPwsh</h3>
+	<p>Changed the router discover for a customer to only include the routers in one of the two MSP management groups configured in NCM.</p>
+	<p class="date">12/04/2020 18:34:37</p>
+
+	<h3>LogicMonitorGroovy</h3>
+	<p>Added individual counters to track the number of open tickets by block-of-hours or prepaid support along with the total number of open tickets.</p>
+	<p class="date">12/03/2020 16:10:36</p>
+
+	<h3>O365MalwareAlerts</h3>
+	<p>Added checks to account for when there are no results for either flagged malware or phishing. This is useful at the start of the month given that the check is month-to-date for both scripts. It avoids graphs showing as having no data and breaking within the Dashboard view.</p>
+	<p class="date">12/02/2020 20:13:10</p>
+
+	<h3>LogicMonitorGroovy</h3>
+	<p>Wrapped the output of the variables to ensure proper expansion.</p>
+	<p class="date">12/02/2020 15:01:45</p>
+
+	<h3>LogicMonitorGroovy</h3>
+	<p>Modified the script to account for time different billable types between support contract and block of hours. Metrics on monthly tickets, total time, and average time per ticket are calculated for each billable type independently. The script will also now determine the total number of open tickets across both billable types.</p>
+	<p class="date">12/01/2020 22:09:12</p>
+
+	<h3>LogicMonitorGroovy</h3>
+	<p>Merge pull request #4 from jfabry-noc/Bob_test
+
+Added ERS Switch OID active discovery.</p>
+	<p class="date">11/30/2020 18:39:46</p>
+
+	<h3>CPPushAPI</h3>
+	<p>Fixed a typo on the dumps method for json when we hit a subscription expiration notice.</p>
+	<p class="date">11/30/2020 13:57:19</p>
+
+	<h3>LogicMonitorGroovy</h3>
+	<p>Re-added a code block that was accidentally removed in 5291837 to check the routers for current or outdated firmware.</p>
+	<p class="date">11/19/2020 17:08:01</p>
+	<h3>LogicMonitorGroovy</h3>
+	<p>Updated the discovery scripts to omit routers for a particular customer which were not members of particular groups.</p>
+	<p class="date">11/19/2020 16:41:59</p>
+	<h3>LogicMonitorPwsh</h3>
+	<p>Modified the router discovery to filter out devices for a customer if they do not match particular group membership.</p>
+	<p class="date">11/19/2020 16:15:54</p>
+
+	<h3>LogicMonitorGroovy</h3>
+	<p>Modified the parsing to make a per-device query for additional metrics like the memory and CPU utilization. These are only returned when checking for a specific device, not when querying for all of the devices, making the additional queries necessary outside of discovery.</p>
+	<p class="date">11/19/2020 15:17:32</p>
+
+	<h3>GitCommit</h3>
+	<p>Fixed a bug I introduced in 7d7b730 where I changed the commit message to be grammatically correct. This broke my filter for those messages from posting to the site and creating an endless loop of posts. The filter should now work again for the new commit message, and the errant postings have been cleaned up.</p>
+	<p class="date">11/18/2020 23:04:48</p>
+	<h3>CPPushAPI</h3>
+	<p>Added a new .gitignore entry for an external Python file for the shared secret used to authenticate communication. Updated the webhook listener to now calculate the hash of the response body with the shared secret as SHA256 in order to validate that the message came from a legitimate server. This is used in conjunction with firewalling access to just the documented IPs to the Flask server.</p>
+	<p class="date">11/18/2020 22:47:46</p>
+
+	<h3>CPPushAPI</h3>
+	<p>Moved the writing of the JSON file to a function and added error checking to it.</p>
+	<p class="date">11/16/2020 18:41:56</p>
+	<h3>GitCommit</h3>
+	<p>Changed the phrasing of the commit message from commits to commit(s) so that it doesn't look quite as gross by being grammatically incorrect when only a single commit is included.</p>
+	<p class="date">11/16/2020 16:19:40</p>
+
+	<h3>CPPushAPI</h3>
+	<p>Updated the check for a router in the alert to compare the key to None rather than if the key exist. Added a conditional block to handle expiring subscription alerts.</p>
+	<p class="date">11/16/2020 15:39:00</p>
+
+	<h3>CPPushAPI</h3>
+	<p>Updated the listener to grab a header provided by the push service. The header is a hash of the secret key in the push policy and the body of the message so that pushed data can be authenticated.</p>
+	<p class="date">11/13/2020 22:14:38</p>
+
+	<h3>CPPushAPI</h3>
+	<p>Modified the listener to remove references from the API call to an undefined function used in a previous script. Alerts featuring a router query the router's friendly name and write a local JSON file for ingestion into LM.</p>
+	<p class="date">11/13/2020 15:47:09</p>
+
+	<h3>GitCommit</h3>
+	<p>Fixed a semi-duplicate entry in the HTML because I managed to create a merge conflict for myself by forgetting to Already up to date. before committing in a copy of the repo that I hadn't used for a while.</p>
+	<p class="date">11/13/2020 00:14:52</p>
+
+	<h3>jfabry-noc.github.io</h3>
+	<p>Moved the music link back to my Apple Music profile.</p>
+	<p class="date">11/12/2020 22:53:06</p>
+	<h3>CPPushAPI</h3>
+	<p>Removed __pycache__ since that was not meant to be committed originally.
+Modified the push_configs file provided from CP to allow me to quickly
+re-enable the push config while I'm testing the handling of the data.
+Updated the listener to start parsing out the data provided from the
+hook and create local files for LM.</p>
+	<p class="date">11/12/2020 21:09:24</p>
+
+	<h3>CPPushAPI</h3>
+	<p>Included the config push script supplied by CP. Updated .gitignore to not include a config_constants file with connection-specific details to import.</p>
+	<p class="date">11/12/2020 18:13:07</p>
+	<h3>Dashboard</h3>
+	<p>Added an indicator to the reboot prompt to let the user know they need to enter Y or N. The code ignores the case.</p>
+	<p class="date">11/12/2020 16:44:50</p>
+
+	<h3>Dashboard</h3>
+	<p>Updated the periodic displays of what stage the script is at to clearly delineate them from the command outputs. We do not want to suppress the command output, so this just makes it easier to keep tabs on what is executing without excessive hunting.</p>
+	<p class="date">11/10/2020 20:10:06</p>
+
+	<h3>Dashboard</h3>
+	<p>Added a conditional to the start of the script to check for the uid. If
+it isn't 0, which would mean the script was executed with sudo, the user
+is notified and the script exits.
+
+Several sections were updated to include -y on apt commands that were
+previously missing.
+
+The default php.ini setting includes the " =" after the ";date.timezone"
+listing. The sed commands were updated to reflect this.</p>
+	<p class="date">11/10/2020 17:50:12</p>
+	<h3>LogicMonitorGroovy</h3>
+	<p>Merge pull request #3 from jfabry-noc/Bob_test
+
+Bob test</p>
+	<p class="date">11/10/2020 16:43:29</p>
+	<h3>Dashboard</h3>
+	<p>Added a check for the current PHP version. If it's 7.2, the script will add the PPAs and install everything. If it's already 7.4, the script will start straight at the configuration stage.</p>
+	<p class="date">11/10/2020 16:03:14</p>
+
+	<h3>Dashboard</h3>
+	<p>Modified the parts of the script calling another user account so that all commands can execute under the new user before gracefully exiting back to the original shell without user intervention.</p>
+	<p class="date">11/09/2020 22:57:51</p>
+	<h3>Dashboard</h3>
+	<p>Added the option to specify 'DEV' as a second parameter. If provided, development mode will be enabled. In this mode, the user will be prompted after each stage of the script if they would like to continue or kill the operation. Prevents the script from running amuck when testing it if, for example, the last command executes successfully but does not yield the expected result.</p>
+	<p class="date">11/09/2020 21:44:53</p>
+
+	<h3>Dashboard</h3>
+	<p>Added sed commands for modifying the php.ini files where a timezone update is necessary. Also added a sed command to escape the backslash in the timezone name so that it can be re-used in another sed command later without escaping.</p>
+	<p class="date">11/09/2020 19:38:21</p>
+	<h3>Dashboard</h3>
+	<p>Added additional installations for the full suite of dependencies. Added a CLI parameter where the timezone must be specified as one value out of an array. Improperly specifying a timezone will result in the options being printed and the script halting. Added a prompt to the very end of the script to reboot the entire server.</p>
+	<p class="date">11/09/2020 18:57:18</p>
+	<h3>Dashboard</h3>
+	<p>Updated the .gitignore file to remove unneeded Python references but to avoid capturing a test script and the .swp files from Vim.</p>
+	<p class="date">11/09/2020 16:11:28</p>
+	<h3>Dashboard</h3>
+	<p>Added a base shell script for updating the PHP components from 7.2 to 7.4</p>
+	<p class="date">11/09/2020 16:11:01</p>
+
+	<h3>CPPushAPI</h3>
+	<p>Added a different sample route to the listener.</p>
+	<p class="date">11/09/2020 14:05:55</p>
+
+	<h3>GitCommit</h3>
+	<p>Additional HTML fixes for the tag closing bug.</p>
+	<p class="date">11/06/2020 16:36:14</p>
+	<h3>GitCommit</h3>
+	<p>Merge branch 'main' of https://github.com/jfabry-noc/GitCommit into main</p>
+	<p class="date">11/06/2020 16:34:53</p>
+	<h3>GitCommit</h3>
+	<p>Fixed a bug where the paragraph tags for the commit comment were being closed by an h3 tag. I also updated the current entries in the HTML that had been written in this way.</p>
+	<p class="date">11/06/2020 16:34:31</p>
+	<h3>O365MalwareAlerts</h3>
+	<p>Redid the phishing code to move from BatchScript to just script and handle instancing through Active Discovery in LogicMonitor.</p>
+	<p class="date">11/06/2020 16:25:23</p>
+
+		<h3>O365MalwareAlerts</h3>
+		<p>Modified the script to print only the prefix of the email address to simplify the BatchScript creation process within LogicMonitor.</p>
+		<p class="date">11/05/2020 20:32:25</p>
+		<h3>O365MalwareAlerts</h3>
+		<p>Created a script for a LogicMonitor DataSource to process the phishing results from the local collector's filesystem as a BatchScript. Also updated the .gitignore file to avoid commiting the sample result .csv file.</p>
+		<p class="date">11/05/2020 20:02:59</p>
+
+		<h3>O365MalwareAlerts</h3>
+		<p>Added a check for an existing result file and removing it prior to starting anything else.</p>
+		<p class="date">11/05/2020 16:27:23</p>
+		<h3>O365MalwareAlerts</h3>
+		<p>Shifted the script to be designed for running as a Scheduled Task or cron job rather than by LogicMonitor directly due to the authentication requirements. Added logging.</p>
+		<p class="date">11/05/2020 16:11:27</p>
+
+		<h3>O365MalwareAlerts</h3>
+		<p>Created a new script file for querying the O365 quarantine for messages filtered there via transport rule. The script will validate that the appropriate transport rule caught the message (not filterable in the original call) and then report back how many users have received phishing messages blocked this way. Handles the metrics on a month-to-date basis.</p>
+		<p class="date">11/04/2020 20:20:44</p>
+
+		<h3>CPPushAPI</h3>
+		<p>Added the baseline files that were created for generic webhook listener testing. Also included the sample nginx.conf file for Gunicorn as the Flask + Nginx serving combo.</p>
+		<p class="date">11/04/2020 15:03:08</p>
+		<h3>CPPushAPI</h3>
+		<p>Initial commit</p>
+		<p class="date">11/04/2020 12:55:47</p>
+
+		<h3>GitCommit</h3>
+		<p>Removed redundant logging when querying each repo for commits. Modified the HTML generation to stop adding an extra newline to the end of the HTML file each time. Removed a repeated line in the HTML file because I forgot how daylight saving time works.</p>
+		<p class="date">11/03/2020 13:07:07</p>
+
+		<h3>GitCommit</h3>
+		<p>Modified the script to allow for commit messages on the GitCommit repo itself if they aren't the ones automatically generated for the sake of CI/CD to Netlify.</p>
+		<p class="date">11/02/2020 22:55:35</p>
+		<h3>GitCommit</h3>
+		<p>Modified to remove a commit that will become duplicate due to my testing. Again because of the fact that I can't do block comments, apparently.</p>
+		<p class="date">11/02/2020 21:35:59</p>
+		<h3>GitCommit</h3>
+		<p>Fixed yet another bug introduced by my inability to do block comments.</p>
+		<p class="date">11/02/2020 21:33:41</p>
+		<h3>GitCommit</h3>
+		<p>Addressed a bug where I was erroneously doing an extra comparison for the time. This was code from prior to when the filter was applied to the URL. Any returned commits should be considered valid if my account is the author.</p>
+		<p class="date">11/02/2020 21:31:00</p>
+		<h3>LogicMonitorGroovy</h3>
+		<p>Updated the Desk metrics to temporarily include the customer's internal blackhole alias.</p>
+		<p class="date">11/02/2020 21:17:56</p>
+		<h3>LogicMonitorGroovy</h3>
+		<p>Modified the EventSource and corresponding URL filter to account for the job running every 15 minutes rather than every 30 minutes. The time variable is in milliseconds.</p>
+		<p class="date">11/02/2020 20:52:56</p>
+		<h3>jfabry-noc.github.io</h3>
+		<p>Added a new link to gitcommit.gay and updated the CSS to include the alternate GitHub icon for it.</p>
+		<p class="date">10/31/2020 18:11:00</p>
+
+		<h3>CPSpeedTests</h3>
+		<p>Moved the default timeframe from 60 seconds to a 20 second duration.</p>
+		<p class="date">10/30/2020 20:58:51</p>
+
+		<h3>OxidizedBackup</h3>
+		<p>Created processing for each child directory in the SharePoint root, correlating it with the hostname of the Dashboard. If there is a match, parse together the new SharePoint URL for uploading the backup tarball and clearing out old tarballs.</p>
+		<p class="date">10/29/2020 20:40:38</p>
+		<h3>OxidizedBackup</h3>
+		<p>Added the ability to query the MS Graph for the contents of a SharePoint directory.</p>
+		<p class="date">10/29/2020 18:48:45</p>
+		<h3>OxidizedBackup</h3>
+		<p>Added skeleton code for handling a connection to the MS Graph and checking the validity of a Graph token. Also added to the repository the Python MSAL package and the dependencies for it.</p>
+		<p class="date">10/29/2020 17:41:13</p>
+		<h3>LogicMonitorPwsh</h3>
+		<p>Modified the hourly collection script to execute every 15 minutes.</p>
+		<p class="date">10/29/2020 17:34:50</p>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+          <span class="text-muted"><a href="https://jfabhd.com">JFabHD</a> - <a href="https://unusually.pink">Unusually Pink</a> - <a href="https://gitcommit.gay">2021</a> - <a href="https://gitcommit.gay/2020/">2020</a></span>
+      </div>
+    </footer>
+  </body>
+</html>
+
