@@ -34,6 +34,16 @@
       <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
       <h2>2021 Commits</h2>
 			<!-- Watermark -->
+	<h3>LogicMonitorGroovy</h3>
+	<p>Added a call to Math.round() for the available licenses since Groovy was setting the difference of the subtraction to a float. The operand for the total licenses will always be a whole number, but the number of consumed licenses can be a decimal depending on the collection metrics returned from the /graphs/ endpoint.</p>
+	<p class="date">01/19/2021 15:43:23</p>
+	<h3>LogicMonitorGroovy</h3>
+	<p>Added calculations for the percentage of free licenses for an rXg instance. Printed the percentage, total licenses, and total consumed licenses to standard out for LogicMonitor. The calculations and comparisons of the different levels may need to be modified further once a clustered implementation is available for testing.</p>
+	<p class="date">01/19/2021 15:36:14</p>
+	<h3>LogicMonitorGroovy</h3>
+	<p>Cleaned up formatting and comments. Modified the final println calls to the key-value pair format expected by LogicMonitor.</p>
+	<p class="date">01/19/2021 15:21:42</p>
+
 	<h3>GroovyMSAL</h3>
 	<p>Added the basic code with the Grape statement and msal4j import from the Maven repository, along with the method imports. Added the code for importing the AAD-specific information from a local JSON file. Created a .gitignore to keep the .json file and Vim .swp files from accidentally being included in the GitHub repo.</p>
 	<p class="date">01/19/2021 00:40:33</p>
