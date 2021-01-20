@@ -34,6 +34,13 @@
       <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
       <h2>2021 Commits</h2>
 			<!-- Watermark -->
+	<h3>GroovyMSAL</h3>
+	<p>Added a second variant of the script that uses the exact same function as the sample Java code from Microsoft other than not containing global variables, but it generates the same issue with the JWT. Also verified that intentionally flubbing the client ID, tenant ID, secret, or scope generates a specific error for that piece of information.</p>
+	<p class="date">01/20/2021 02:18:46</p>
+	<h3>GroovyMSAL</h3>
+	<p>Added functions for getting an authentication token and then querying for the AAD users. Functions are complete, but there's currently an issue with retrieving a valid JWT.</p>
+	<p class="date">01/20/2021 01:49:41</p>
+
 	<h3>LogicMonitorGroovy</h3>
 	<p>Added a call to Math.round() for the available licenses since Groovy was setting the difference of the subtraction to a float. The operand for the total licenses will always be a whole number, but the number of consumed licenses can be a decimal depending on the collection metrics returned from the /graphs/ endpoint.</p>
 	<p class="date">01/19/2021 15:43:23</p>
