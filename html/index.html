@@ -34,6 +34,10 @@
       <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
       <h2>2021 Commits</h2>
 			<!-- Watermark -->
+	<h3>LogicMonitorGroovy</h3>
+	<p>Made 2 alert checks for state = 1, which is the default for alerts, and state = 0, which is when an alert is OK. This is necessary since transient alerts, like reboots would be missed if state = 0 isn't checked. Also added an additional query for the alert rule name and parsed that with the hostname in order for clearer messaging.</p>
+	<p class="date">01/25/2021 20:58:27</p>
+
 	<h3>jfabry-noc.github.io</h3>
 	<p>Added Cloudflare Analytics script to the end of the index.html page.</p>
 	<p class="date">01/23/2021 17:58:20</p>
