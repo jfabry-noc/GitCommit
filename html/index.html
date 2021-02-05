@@ -34,6 +34,25 @@
       <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
       <h2>2021 Commits</h2>
 			<!-- Watermark -->
+	<h3>LogicMonitorGroovy</h3>
+	<p>Made an additional update to the discovery scripts for Extreme CloudIQ devices. For non-APs, the hostname is generally the model of the device, which is not unique. LogicMonitor will only display duplicate names once, even if the identifier is unique. As a result, non-APs now have the last 4 characters of their MAC address appended to the end of the hostname.</p>
+	<p class="date">02/05/2021 15:57:27</p>
+	<h3>LogicMonitorGroovy</h3>
+	<p>Tweaked the device discovery scripts for Extreme CloudIQ to include the IP of the management interface in the device description for LogicMonitor. The hostname is typically just the device model, which is what is being used for the friendly name. This made identifying a particular device from a list in LogicMonitor difficult.</p>
+	<p class="date">02/05/2021 14:50:33</p>
+	<h3>LogicMonitorGroovy</h3>
+	<p>Modified the script to gather alerts from the LibreNMS API to account
+for the fact that the timestamp on each alert is the local system time
+but without any offset provided. Since the query from LogicMonitor
+is always based on UTC, the script now takes an offset property on
+the LibreNMS resource in LM and modifies the query time to gather
+alerts from the last 15 minutes.
+
+Additional functions were added for the number of days in each month,
+and determining whether or not it's currently DST so that the offset can
+be adjusted accordingly.</p>
+	<p class="date">02/05/2021 14:01:53</p>
+
 	<h3>GroovyMSAL</h3>
 	<p>Merge branch 'main' of https://github.com/jfabry-noc/GroovyMSAL</p>
 	<p class="date">02/03/2021 22:38:24</p>
