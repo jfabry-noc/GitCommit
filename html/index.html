@@ -34,6 +34,13 @@
       <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
       <h2>2021 Commits</h2>
 			<!-- Watermark -->
+	<h3>CarbonBlackInstallers</h3>
+	<p>Modified the macOS installer package to only do System Extensions with Big Sur per the support guidance from Carbon Black. Modified the Windows installer to increase the logging and fixed a bug where I was referencing the exclusion object rather than the ExclusionPath property of the object.</p>
+	<p class="date">02/25/2021 22:17:40</p>
+	<h3>rXgBackup</h3>
+	<p>Added a the delete_graph function to remove content via the Graph API. It will query the provided directory for all content, and then it will loop through that content, deleting the oldest item found until only 4 things are left. I also added code to the main body calling this after a successful file upload.</p>
+	<p class="date">02/25/2021 22:14:36</p>
+
 	<h3>rXgBackup</h3>
 	<p>Added the ability to upload the current file into SharePoint at the desired directory, breaking it into chunks small enough to be uploaded and using an upload session returned by the Graph API.</p>
 	<p class="date">02/22/2021 23:19:26</p>
