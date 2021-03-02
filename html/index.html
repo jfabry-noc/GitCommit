@@ -34,6 +34,13 @@
       <p class="lead">All of the blunderous commit messages from <a href="https://github.com/jfabry-noc">John</a>.</p>
       <h2>2021 Commits</h2>
 			<!-- Watermark -->
+	<h3>CarbonBlackInstallers</h3>
+	<p>Removed some commented out sample data. Fixed a typo in script output. Added additional output giving the full command being executed for the installation in case specific troubleshooting is required later or confirmation of exactly which switches were used.</p>
+	<p class="date">03/02/2021 15:55:32</p>
+	<h3>CarbonBlackInstallers</h3>
+	<p>Added a check via sysctl to determine the processor type. If Intel and Big Sur, the application is installed with kernel extensions. If an Apple chip is detected, the installation is done with system extensions, as kernel extensions are not currently supported by Carbon Black on Apple silicon.</p>
+	<p class="date">03/02/2021 14:55:47</p>
+
 	<h3>rXgBackup</h3>
 	<p>Removed all unnecessary import statements. Updated and fixed comments throughout the script. Added a check for folders in SharePoint which were added by the script and thus not included in the original folder check. This will prevent attempts to duplicate folders in SharePoint in the instance that an rXg with no folder has multiple local backup files to upload.</p>
 	<p class="date">02/26/2021 16:24:31</p>
