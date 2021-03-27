@@ -35,3 +35,7 @@ h3 {
 a {
     color: #790c5a;
 }
+
+a:hover{
+    color: #cc33ff;
+}
