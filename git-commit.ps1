@@ -217,6 +217,7 @@ if($commitMessageList.Count -gt 0) {
 
         # Commit to the repo so that Netlify can update via CI.
         WriteLog -Message "Making a new commit for $($commitMessageList.Count) commits." -Type info
+        git pull
         git add ./html/.
         git commit -m "Added $($commitMessageList.Count) new commit(s)."
         git push origin main
